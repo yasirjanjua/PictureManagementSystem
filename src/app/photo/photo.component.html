@@ -1,0 +1,48 @@
+<mat-progress-bar mode="query" value="0" color="accent"></mat-progress-bar>
+<mat-card>
+  <mat-card-title-group>
+    <mat-card-title>0 Photos</mat-card-title>
+    <span class="spacer"></span>
+    <button mat-icon-button>
+      <mat-icon>sort</mat-icon>
+    </button>
+  </mat-card-title-group>
+  <mat-card-content>
+    <div class="photo">
+      <img src="" alt="img">
+      <h3>image 1</h3>
+    </div>
+    <div class="photo">
+      <img src="" alt="img">
+      <h3>image 1</h3>
+    </div>
+    <div class="photo">
+      <img src="" alt="img">
+      <h3>image 1</h3>
+    </div>
+    <div class="photo">
+      <img src="" alt="img">
+      <h3>image 1</h3>
+    </div>
+    <div class="photo">
+      <img src="" alt="img">
+      <h3>image 1</h3>
+    </div>
+    <div class="photo">
+      <img src="" alt="img">
+      <h3>image 1</h3>
+    </div>
+    <div class="photo">
+      <img src="" alt="img">
+      <h3>image 1</h3>
+    </div>
+    <div class="photo">
+      <img src="" alt="img">
+      <h3>image 1</h3>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+  </mat-card-footer>
+</mat-card>

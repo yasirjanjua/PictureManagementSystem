@@ -1,0 +1,21 @@
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+.active-link,
+.mat-list-option:focus,
+.mat-list-option:hover,
+.mat-nav-list .mat-list-item:focus,
+.mat-nav-list .mat-list-item:hover {
+  background-color: rgb(37, 0, 172);
+  color: #fff;
+
+  .color--muted{
+    color: #fff;
+  }
+}

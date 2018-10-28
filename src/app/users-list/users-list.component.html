@@ -1,0 +1,20 @@
+<mat-nav-list style="padding-top: 0 ">
+  <mat-card style="padding: 0 ">
+    <mat-toolbar>
+      <span>Users</span>
+      <span class="spacer"></span>
+      <mat-icon>delete</mat-icon>
+    </mat-toolbar>
+    <perfect-scrollbar style="max-height: 85vh;">
+      <a mat-list-item *ngFor='let user of users' routerLinkActive="active-link" routerLink="/users/{{user.id}}">
+        <img matListAvatar src="https://via.placeholder.com/150/" />
+        <h5 matLine class="fontsize--small">{{user.name}}</h5>
+        <h6 matLine class="fontsize--small">
+          <span class="color--muted">{{user.username}}</span>
+          <span class="block color--muted">{{user.email}}</span>
+        </h6>
+        <mat-divider [inset]="true" style="left: -30px;"></mat-divider>
+      </a>
+    </perfect-scrollbar>
+  </mat-card>
+</mat-nav-list>

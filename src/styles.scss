@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  font-family: "Roboto";
+}
+
+.block {
+  display: block;
+}
+
+.color--muted {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.mat-checkbox-label {
+  .checkbox--custom & {
+    width: 310px;
+    font-size: 13px;
+  }
+}
+
+.mat-checkbox-layout{
+  .checkbox--custom & {
+    margin-bottom: 10px;
+  }
+}
+
+.fontsize--small{
+  .mat-list-text & {
+    font-size: 13px !important;
+  }
+}
+
