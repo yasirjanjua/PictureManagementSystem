@@ -1,26 +1,18 @@
 .container {
-  max-width: 100vw;
-  max-height: 100vh;
-  padding: 0.5em 2em;
-  display: grid;
   background-color: #f3f3f3;
-  grid-template-columns: minmax(270px, 1fr) 3fr;
-  grid-template-rows: repeat(3, minmax(200px, 1fr));
-  grid-gap: 26px 24px;
-  grid-template-areas:
-    "users albums"
-    "users photos"
-    "users photos"
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
 }
 
-.users {
-  grid-area: users;
+.sidebar {
+  width: 22%;
+  min-width: 300px;
+  padding: 1em 0.5em 1em 3em ;
 }
 
-.albums {
-  grid-area: albums;
-}
-
-.photos {
-  grid-area: photos;
+.album {
+  width: 78%;
+  padding: 1em 3em 1em 0.5em;
 }

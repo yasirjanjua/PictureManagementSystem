@@ -5,7 +5,7 @@
       <span class="spacer"></span>
       <mat-icon>delete</mat-icon>
     </mat-toolbar>
-    <perfect-scrollbar style="max-height: 85vh;">
+    <perfect-scrollbar style="height: 100%;">
       <a mat-list-item *ngFor='let user of users' routerLinkActive="active-link" routerLink="/users/{{user.id}}">
         <img matListAvatar src="https://via.placeholder.com/150/" />
         <h5 matLine class="fontsize--small">{{user.name}}</h5>

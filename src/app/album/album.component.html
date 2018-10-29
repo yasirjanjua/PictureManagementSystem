@@ -1,10 +1,10 @@
-<mat-card>
+<mat-card class="album__list">
   <mat-card-title-group>
     <mat-card-title>Albums</mat-card-title>
     <span class="spacer"></span>
     <mat-checkbox>select all</mat-checkbox>
   </mat-card-title-group>
-  <mat-card-content *ngIf="(albums$ | async) as albums; else loading">
+  <mat-card-content style="min-height: 150px" *ngIf="(albums$ | async) as albums; else loading">
     <mat-checkbox class="checkbox--custom" *ngFor='let album of albums'>
       {{album.title | slice:0:30}}
       <span class="checkbox__sublabel color--muted">200 photos</span>
@@ -19,3 +19,4 @@
 <ng-template #loading>
   select a user
 </ng-template>
+<app-photo class="photo__list"></app-photo>

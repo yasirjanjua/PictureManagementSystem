@@ -1,3 +1,17 @@
+:host {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.album__list{
+  margin-bottom: 3em;
+}
+
+.photo__list{
+  height: 75%;
+}
+
 .checkbox__sublabel {
   text-align: right;
   float: right;
@@ -11,4 +25,8 @@
 
 .footer--custom{
   height: 5px;
+}
+
+.photo-grid{
+  margin-top: 1em;
 }
