@@ -1,7 +1,7 @@
 <mat-progress-bar mode="query" value="0" color="accent"></mat-progress-bar>
 <mat-card>
   <mat-card-title-group>
-    <mat-card-title>0 Photos</mat-card-title>
+    <mat-card-title>{{length}} Photos</mat-card-title>
     <span class="spacer"></span>
     <button mat-icon-button>
       <mat-icon>sort</mat-icon>
@@ -9,8 +9,10 @@
   </mat-card-title-group>
   <mat-card-content *ngIf="photos; else loading">
     <div class="photo" *ngFor="let photo of photos | slice: start : end">
-      <img src="{{photo.url}}" alt="img">
-      <p>{{photo.title}}</p>
+      <div class="photo__figure">
+        <img src="{{photo.url}}" alt="img">
+      </div>
+      <p>{{photo.title | slice: 0:34}}</p>
     </div>
   </mat-card-content>
   <mat-card-footer >

@@ -2,8 +2,16 @@
   display: inline-block;
   max-width: 300px;
   padding: 5px;
+  margin: 0 0.5em;
 
-  img {
-    max-width: 200px;
+  .photo__figure {
+    width: 300px;
+    max-height: 150px;
+    overflow: hidden;
+
+    img{
+      max-width: 350px;
+      height: auto;
+    }
   }
 }

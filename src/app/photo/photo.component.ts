@@ -14,12 +14,12 @@ import { MatCardContent } from '@angular/material/card';
 export class PhotoComponent implements OnInit {
 
   photos = [];
+  end = 0;
+  start = 0;
 
   pageSize = 10;
   length = 0;
   currentPage = 0;
-  end = 0;
-  start = 0;
 
   constructor(private photoService: PhotoService, private route: ActivatedRoute) { }
 
@@ -34,8 +34,7 @@ export class PhotoComponent implements OnInit {
       this.photos = data;
       this.length = data.length;
       this.end = this.pageSize;
-      console.log(this.start + '  ' + this.end);
-      });
+    });
   }
 
   handlePage(event: PageEvent) {
