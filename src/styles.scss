@@ -2,10 +2,10 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
-  width: 100vw;
-  height: 100vh;
+  background-color: #f3f3f3;
   margin: 0;
   font-family: "Roboto";
+  height: 100vh;
 }
 
 .block {
@@ -18,7 +18,7 @@ body {
 
 .mat-checkbox-label {
   .checkbox--custom & {
-    width: 281px;
+    width: 250px;
     font-size: 13px;
   }
 }

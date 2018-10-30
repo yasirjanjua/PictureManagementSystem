@@ -24,7 +24,7 @@ export class PhotoComponent implements OnInit {
   constructor(private photoService: PhotoService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getPhotos();
+   // this.getPhotos();
   }
 
   getPhotos() {

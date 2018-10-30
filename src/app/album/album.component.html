@@ -4,9 +4,9 @@
     <span class="spacer"></span>
     <mat-checkbox>select all</mat-checkbox>
   </mat-card-title-group>
-  <mat-card-content style="min-height: 150px" *ngIf="(albums$ | async) as albums; else loading">
+  <mat-card-content *ngIf="(albums$ | async) as albums; else loading">
     <mat-checkbox class="checkbox--custom" *ngFor='let album of albums'>
-      {{album.title | slice:0:30}}
+      {{album.title | slice:0:25}}
       <span class="checkbox__sublabel color--muted">200 photos</span>
     </mat-checkbox>
   </mat-card-content>

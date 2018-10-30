@@ -1,11 +1,11 @@
 .photo {
   display: inline-block;
-  max-width: 300px;
+  max-width: 250px;
   padding: 5px;
   margin: 0 0.5em;
 
   .photo__figure {
-    width: 300px;
+    width: 250px;
     max-height: 150px;
     overflow: hidden;
 
@@ -14,4 +14,11 @@
       height: auto;
     }
   }
+}
+
+.photos__msg {
+  min-height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -7,7 +7,8 @@
       <mat-icon>sort</mat-icon>
     </button>
   </mat-card-title-group>
-  <mat-card-content *ngIf="photos; else loading">
+<div *ngIf="photos.length > 1; else loading">
+  <mat-card-content>
     <div class="photo" *ngFor="let photo of photos | slice: start : end">
       <div class="photo__figure">
         <img src="{{photo.url}}" alt="img">
@@ -19,4 +20,10 @@
     <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" [pageIndex]="currentPage" (page)= "pageEvent = handlePage($event)">
     </mat-paginator>
   </mat-card-footer>
+</div>
 </mat-card>
+<ng-template #loading>
+  <div class="photos__msg">
+      <p class="color--muted">Select an Album</p>
+  </div>
+</ng-template>
