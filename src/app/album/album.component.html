@@ -4,11 +4,13 @@
     <span class="spacer"></span>
     <mat-checkbox>select all</mat-checkbox>
   </mat-card-title-group>
-  <mat-card-content *ngIf="(albums$ | async) as albums; else loading">
-    <mat-checkbox class="checkbox--custom" *ngFor='let album of albums'>
-      {{album.title | slice:0:25}}
-      <span class="checkbox__sublabel color--muted">200 photos</span>
-    </mat-checkbox>
+  <mat-card-content *ngIf="(albums$ | async) as albums">
+    <div *ngIf="albums.length > 1;else loading">
+      <mat-checkbox class="checkbox--custom" *ngFor='let album of albums'>
+        {{album.title | slice:0:25}}
+        <span class="checkbox__sublabel color--muted">200 photos</span>
+      </mat-checkbox>
+    </div>
   </mat-card-content>
   <mat-card-footer class="footer--custom" align="end">
     <button mat-fab>
@@ -16,7 +18,21 @@
     </button>
   </mat-card-footer>
 </mat-card>
+
+<mat-progress-bar mode="query" value="0" color="accent"></mat-progress-bar>
+<mat-card class="photo__list">
+  <mat-card-title-group>
+    <mat-card-title>{{length}} Photos</mat-card-title>
+    <span class="spacer"></span>
+    <button mat-icon-button>
+      <mat-icon>sort</mat-icon>
+    </button>
+  </mat-card-title-group>
+  <app-photo></app-photo>
+</mat-card>
+
 <ng-template #loading>
-  select a user
+  <div class="users__msg">
+    <p class="color--muted">Select a User</p>
+  </div>
 </ng-template>
-<app-photo class="photo__list"></app-photo>
