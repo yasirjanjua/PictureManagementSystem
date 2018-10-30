@@ -1,3 +1,9 @@
 .photo {
   display: inline-block;
+  max-width: 300px;
+  padding: 5px;
+
+  img {
+    max-width: 200px;
+  }
 }

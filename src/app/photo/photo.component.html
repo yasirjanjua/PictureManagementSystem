@@ -7,42 +7,14 @@
       <mat-icon>sort</mat-icon>
     </button>
   </mat-card-title-group>
-  <mat-card-content>
-    <div class="photo">
-      <img src="" alt="img">
-      <h3>image 1</h3>
-    </div>
-    <div class="photo">
-      <img src="" alt="img">
-      <h3>image 1</h3>
-    </div>
-    <div class="photo">
-      <img src="" alt="img">
-      <h3>image 1</h3>
-    </div>
-    <div class="photo">
-      <img src="" alt="img">
-      <h3>image 1</h3>
-    </div>
-    <div class="photo">
-      <img src="" alt="img">
-      <h3>image 1</h3>
-    </div>
-    <div class="photo">
-      <img src="" alt="img">
-      <h3>image 1</h3>
-    </div>
-    <div class="photo">
-      <img src="" alt="img">
-      <h3>image 1</h3>
-    </div>
-    <div class="photo">
-      <img src="" alt="img">
-      <h3>image 1</h3>
+  <mat-card-content *ngIf="photos; else loading">
+    <div class="photo" *ngFor="let photo of photos | slice: start : end">
+      <img src="{{photo.url}}" alt="img">
+      <p>{{photo.title}}</p>
     </div>
   </mat-card-content>
-  <mat-card-footer>
-    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  <mat-card-footer >
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" [pageIndex]="currentPage" (page)= "pageEvent = handlePage($event)">
     </mat-paginator>
   </mat-card-footer>
 </mat-card>

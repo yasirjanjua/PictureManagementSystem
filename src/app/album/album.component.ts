@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class AlbumComponent implements OnInit {
   albums$: Observable<any>;
+
   constructor(private albumService: AlbumService, private route: ActivatedRoute) { }
 
   ngOnInit() {
