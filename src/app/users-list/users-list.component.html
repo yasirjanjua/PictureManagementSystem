@@ -1,11 +1,27 @@
-<mat-nav-list style="padding-top: 0 ">
-  <mat-card style="padding: 0 ">
+<mat-nav-list style="padding-top: 0; height: 100%; ">
+  <mat-card style="padding: 0; height: 100%; ">
     <mat-toolbar>
-      <span>Users</span>
-      <span class="spacer"></span>
-      <mat-icon>delete</mat-icon>
+      <div class="toolbar--default" *ngIf="!isSearchBarActive">
+        <span class="header">Users</span>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="sortList()">
+          <mat-icon style="font-size: 18px;">filter_list</mat-icon>
+        </button>
+        <button mat-icon-button (click)="isSearchBarActive = true">
+          <mat-icon style="font-size: 18px;">search</mat-icon>
+        </button>
+      </div>
+      <div class="
+            search-bar" *ngIf="isSearchBarActive">
+        <div class="search-bar__container" floatLabel="never">
+          <button mat-button mat-icon-button aria-label="Clear" (click)="revertList()">
+            <mat-icon style="font-size: 18px;">keyboard_backspace</mat-icon>
+          </button>
+          <input type="search" class="search-bar__area" (change)="displayUpdatedList($event.target.value)" placeholder="search">
+        </div>
+      </div>
     </mat-toolbar>
-    <perfect-scrollbar style="height: 100%;">
+    <perfect-scrollbar style="height: 94%;">
       <a mat-list-item *ngFor='let user of users' routerLinkActive="active-link" routerLink="/users/{{user.id}}">
         <img matListAvatar src="https://via.placeholder.com/150/" />
         <h5 matLine class="fontsize--small">{{user.name}}</h5>
