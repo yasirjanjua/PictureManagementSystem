@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, SimpleChanges, OnChanges, SimpleChange } from '@angular/core';
 import { PageEvent, MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { PhotoService } from './../services/photo.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { MatCardContent } from '@angular/material/card';
 
@@ -11,9 +11,13 @@ import { MatCardContent } from '@angular/material/card';
   templateUrl: './photo.component.html',
   styleUrls: ['./photo.component.scss']
 })
-export class PhotoComponent implements OnInit {
+export class PhotoComponent implements OnInit, OnChanges {
 
-  photos = [];
+  @Input() photos: object[];
+  photos$: Observable<any>;
+
+  @Input() isActive: boolean;
+
   end = 0;
   start = 0;
 
@@ -24,17 +28,24 @@ export class PhotoComponent implements OnInit {
   constructor(private photoService: PhotoService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-   // this.getPhotos();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    const photoList: SimpleChange = changes.photos;
+    if (photoList.currentValue) {
+      console.log(photoList.currentValue);
+      this.photos$ = of(photoList.currentValue);
+      this.getPhotos();
+    }
   }
 
   getPhotos() {
-    this.route.paramMap
-    .pipe(switchMap((params: ParamMap) => this.photoService.getPhotosByAlbumId(+params.get('id'))))
-    .subscribe(data => {
-      this.photos = data;
-      this.length = data.length;
-      this.end = this.pageSize;
-    });
+    this.photos$
+      .subscribe(data => {
+        this.photos = data;
+        this.length = data.length;
+        this.end = this.pageSize;
+      });
   }
 
   handlePage(event: PageEvent) {
