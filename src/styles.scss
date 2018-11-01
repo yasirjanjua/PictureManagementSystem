@@ -1,6 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
 
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+@import './theme.scss';
+
+.custom-theme {
+  @include angular-material-theme($my-theme);
+}
+
+* {
+  box-sizing:border-box;
+}
 body {
   background-color: #f3f3f3;
   margin: 0;
@@ -26,7 +39,7 @@ body {
 
 .mat-checkbox-layout{
   .checkbox--custom & {
-    width: calc(100%/4);
+    width: 100%;
     margin-bottom: 10px;
     min-width: 280px;
   }
@@ -36,11 +49,6 @@ body {
   .mat-list-text & {
     font-size: 13px !important;
   }
-}
-
-
- .mat-form-field-underline {
-  display: none;
 }
 
 .overflow--control {

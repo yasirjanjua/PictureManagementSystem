@@ -1,5 +1,4 @@
-<mat-progress-bar mode="query" value="0" color="accent"></mat-progress-bar>
-<mat-card style="height: 95%">
+<mat-card style="height: calc(100% - 4px)">
   <mat-card-title-group>
     <mat-card-title>{{length}} Photos</mat-card-title>
     <span class="spacer"></span>
@@ -7,19 +6,21 @@
       <mat-icon>sort</mat-icon>
     </button>
   </mat-card-title-group>
-  <mat-card-content *ngIf="length; else loading" class="photo-grid">
-    <div class="photo" *ngFor="let photo of photos | slice: start : end">
-      <div class="photo__figure">
-        <img src="{{photo.url}}" alt="img">
+  <div *ngIf="length; else loading">
+    <mat-card-content class="photo-grid">
+      <div class="photo" *ngFor="let photo of photos | slice: start : end">
+        <div class="photo__figure">
+          <img src="{{photo.url}}" alt="img">
+        </div>
+        <p>{{photo.title | slice: 0:34}}</p>
       </div>
-      <p>{{photo.title | slice: 0:34}}</p>
-    </div>
-  </mat-card-content>
-  <mat-card-footer class="photo-grid__footer">
-    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[12, 18, 36, 54, 72]" [pageIndex]="currentPage"
-      (page)="pageEvent = handlePage($event)">
-    </mat-paginator>
-  </mat-card-footer>
+    </mat-card-content>
+    <mat-card-footer class="photo-grid__footer">
+      <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[12, 18, 36, 54, 72]" [pageIndex]="currentPage"
+        (page)="pageEvent = handlePage($event)">
+      </mat-paginator>
+    </mat-card-footer>
+  </div>
 </mat-card>
 <ng-template #loading>
   <div class="photos__msg">

@@ -22,15 +22,17 @@
       </div>
     </mat-toolbar>
     <perfect-scrollbar style="height: 94%;">
-      <a mat-list-item *ngFor='let user of users' routerLinkActive="active-link" routerLink="/users/{{user.id}}">
-        <img matListAvatar src="https://via.placeholder.com/150/" />
-        <h5 matLine class="fontsize--small">{{user.name}}</h5>
-        <h6 matLine class="fontsize--small">
-          <span class="color--muted">{{user.username}}</span>
-          <span class="block color--muted">{{user.email}}</span>
-        </h6>
-        <mat-divider [inset]="true" style="left: -30px;"></mat-divider>
-      </a>
+      <div *ngFor='let user of users'>
+        <a mat-list-item *ngIf="user.id" routerLinkActive="active-link" routerLink="/users/{{user.id}}">
+          <img matListAvatar src="https://via.placeholder.com/150/" />
+          <h5 matLine class="fontsize--small">{{user.name}}</h5>
+          <h6 matLine class="fontsize--small">
+            <span class="color--muted">{{user.username}}</span>
+            <span class="block color--muted">{{user.email}}</span>
+          </h6>
+          <mat-divider [inset]="true" style="left: -30px;"></mat-divider>
+        </a>
+      </div>
     </perfect-scrollbar>
   </mat-card>
 </mat-nav-list>

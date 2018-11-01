@@ -19,6 +19,7 @@ export class UsersListComponent implements OnInit {
   getUsers() {
     this.userListService.getUserList()
       .subscribe(users => {
+        console.log(users);
         this.users = users;
         this.usersBackup = users;
       });
@@ -33,7 +34,6 @@ export class UsersListComponent implements OnInit {
     this.users = this.users.sort((a, b) => {
       return a.name > b.name ? 1 : -1;
     });
-    console.log(this.users);
   }
 
   displayUpdatedList(keyWord) {

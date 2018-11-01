@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Add New Album <span class="color--muted">(user: {{data.userId}})</span></h1>
+<div mat-dialog-content>
+  <mat-form-field required>
+    <mat-label>Album Title</mat-label>
+    <input matInput required #title="ngModel" type="text" [(ngModel)]="data.title">
+  </mat-form-field>
+  <mat-form-field required>
+    <mat-label>Photos Count</mat-label>
+    <input matInput required #photos="ngModel" type="number" [(ngModel)]="data.photos">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-raised-button [disabled]="title.invalid || photos.invalid" color="accent" [mat-dialog-close]="{ photoCount: data.photos, title: data.title, user: data.userId }"
+    cdkFocusInitial>Ok</button>
+</div>

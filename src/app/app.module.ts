@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,20 +20,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersListComponent } from './users-list/users-list.component';
-import { UserComponent } from './user/user.component';
 import { AlbumComponent } from './album/album.component';
 import { PhotoComponent } from './photo/photo.component';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CreateAlbumComponent } from './create-album/create-album.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersListComponent,
-    UserComponent,
     AlbumComponent,
-    PhotoComponent
+    PhotoComponent,
+    CreateAlbumComponent
   ],
   imports: [
     BrowserModule,
@@ -51,8 +52,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule,
     MatFormFieldModule,
     PerfectScrollbarModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
+  entryComponents: [CreateAlbumComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

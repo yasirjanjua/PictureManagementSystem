@@ -1,8 +1,8 @@
+
 :host {
   height: 100%;
   width: 100%;
 }
-
 
 .spacer{
   flex: 1 1 auto;
@@ -13,8 +13,12 @@
 .mat-list-option:hover,
 .mat-nav-list .mat-list-item:focus,
 .mat-nav-list .mat-list-item:hover {
-  background-color: rgb(37, 0, 172);
+  background-color: #03a9f4;
   color: #fff;
+
+  h5{
+    color: #fff;
+  }
 
   .color--muted{
     color: #fff;

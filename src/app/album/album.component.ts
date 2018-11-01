@@ -4,7 +4,15 @@ import { AlbumService } from '../services/album.service';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { PhotoService } from '../services/photo.service';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { CreateAlbumComponent } from '../create-album/create-album.component';
+
+export interface DialogData {
+  title: string;
+  albumId: number;
+  userId: number;
+  photos: number;
+}
 
 @Component({
   selector: 'app-album',
@@ -15,9 +23,16 @@ export class AlbumComponent implements OnInit {
   photosList = [];
   canActivate = false;
 
-  albumContent = [];
+  userId: number;
 
-  constructor(private albumService: AlbumService, private photoService: PhotoService, private route: ActivatedRoute) { }
+  albumContent = [];
+  progressBarMode: string;
+
+  constructor(
+    private albumService: AlbumService,
+    private photoService: PhotoService,
+    private route: ActivatedRoute,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     let albumsStock;
@@ -26,6 +41,7 @@ export class AlbumComponent implements OnInit {
       switchMap((params: ParamMap) => {
         this.onChange();
         // this.canActivate = true;
+        this.userId = +params.get('id');
         return this.albumService.getAlbumById(+params.get('id'));
       })
     ).subscribe(albums => {
@@ -41,9 +57,19 @@ export class AlbumComponent implements OnInit {
     });
   }
 
-  createAlbum() {
-    this.albumService.createAlbum(223233, 4334, 'asdasdasda').subscribe(data => {
-      console.log(data);
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CreateAlbumComponent, {
+      width: '350px',
+      data: { userId: this.userId }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.albumService.createAlbum(result.albumId, result.userId, result.title).subscribe(data => {
+          console.log('album is added!');
+          this.albumContent.push(result);
+        });
+      }
     });
   }
 
@@ -62,7 +88,7 @@ export class AlbumComponent implements OnInit {
   }
 
   onChange(event?, album?) {
-
+    this.progressBarMode = 'indeterminate';
     if (album) {
       album.checked = !album.checked;
 
@@ -83,7 +109,7 @@ export class AlbumComponent implements OnInit {
     } else {
       this.photosList = [];
     }
-
+    this.progressBarMode = null;
   }
 
 }
