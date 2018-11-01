@@ -17,7 +17,7 @@ export class PhotoComponent implements OnInit, OnChanges {
   end = 0;
   start = 0;
 
-  pageSize = 10;
+  pageSize = 12;
   length = 0;
   currentPage = 0;
 

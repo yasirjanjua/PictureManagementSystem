@@ -4,6 +4,7 @@ import { AlbumService } from '../services/album.service';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { PhotoService } from '../services/photo.service';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-album',
@@ -37,6 +38,12 @@ export class AlbumComponent implements OnInit {
         .subscribe(data => {
           this.albumContent = this.getAlbumContent(albumsStock, data);
         });
+    });
+  }
+
+  createAlbum() {
+    this.albumService.createAlbum(223233, 4334, 'asdasdasda').subscribe(data => {
+      console.log(data);
     });
   }
 

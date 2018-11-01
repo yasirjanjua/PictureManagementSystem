@@ -5,11 +5,14 @@
 }
 
 .album__list{
-  margin-bottom: 3em;
+  min-height: 185px;
+  height: 22%;
 }
 
 .photo__list{
-  height: 75%;
+  margin-top: 44px;
+  //min-height: calc(88% - 44px);
+  height: 100%;
 }
 
 .checkbox__sublabel {
@@ -19,12 +22,16 @@
 }
 
 .mat-fab {
-  top: -25px;
-  right: 20px;
+  top: -35px;
+  right: 35px;
+  position: relative;
 }
 
 .footer--custom{
   height: 5px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 
 .photo-grid{
@@ -33,7 +40,7 @@
 
 .users__msg{
   display: flex;
-  min-height: 200px;
+  min-height: 100px;
   justify-content: center;
   align-items: center;
 }

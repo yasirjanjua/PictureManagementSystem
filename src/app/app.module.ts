@@ -24,6 +24,7 @@ import { AlbumComponent } from './album/album.component';
 import { PhotoComponent } from './photo/photo.component';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
     MatProgressBarModule,
     MatPaginatorModule,
     MatInputModule,
+    MatDialogModule,
     MatFormFieldModule,
     PerfectScrollbarModule,
     HttpClientModule

@@ -26,7 +26,7 @@ body {
 
 .mat-checkbox-layout{
   .checkbox--custom & {
-    width: calc(100%/3);
+    width: calc(100%/4);
     margin-bottom: 10px;
     min-width: 280px;
   }
@@ -41,6 +41,10 @@ body {
 
  .mat-form-field-underline {
   display: none;
+}
+
+.overflow--control {
+  overflow-y: auto
 }
 
 

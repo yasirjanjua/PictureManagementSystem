@@ -4,23 +4,20 @@
     <span class="spacer"></span>
     <mat-checkbox>select all</mat-checkbox>
   </mat-card-title-group>
-  <mat-card-content>
-    <div *ngIf="albumContent.length > 1;else loading">
-      <mat-checkbox *ngFor="let album of albumContent" (change)="onChange($event,album)" [checked]="album.checked"
-        class="checkbox--custom">
-        {{album.title | slice:0:25}}
-        <span class="checkbox__sublabel color--muted">{{album.photoCount}}</span>
-      </mat-checkbox>
-    </div>
+  <mat-card-content class="overflow--control" *ngIf="albumContent.length > 1;else loading">
+    <mat-checkbox *ngFor="let album of albumContent" (change)="onChange($event,album)" [checked]="album.checked" class="checkbox--custom">
+      {{album.title | slice:0:35}}
+      <span class="checkbox__sublabel color--muted">{{album.photoCount}}</span>
+    </mat-checkbox>
   </mat-card-content>
-  <mat-card-footer class="footer--custom" align="end">
-    <button mat-fab>
+  <mat-card-actions class="footer--custom" align="end">
+    <button mat-fab (click)="createAlbum()">
       <mat-icon aria-label="Button with add-icon">add</mat-icon>
     </button>
-  </mat-card-footer>
+  </mat-card-actions>
 </mat-card>
 
-<app-photo [isActive]="albumContent.length > 1 ? true : false" [photos]="photosList"></app-photo>
+<app-photo class="photo__list" [isActive]="albumContent.length > 1 ? true : false" [photos]="photosList"></app-photo>
 
 <ng-template #loading>
   <div class="users__msg">
