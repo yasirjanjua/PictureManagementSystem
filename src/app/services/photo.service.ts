@@ -18,4 +18,9 @@ export class PhotoService {
   getPhotosByAlbumId(id): Observable<any> {
     return this.http.get(this.apiUrl + '?albumId=' + id);
   }
+
+  getPhotosByUrl(url: string): Observable<any> {
+    const endpoint = this.apiUrl + '?' + url;
+    return this.http.get(endpoint);
+  }
 }

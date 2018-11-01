@@ -1,10 +1,6 @@
-import { Component, OnInit, ViewChild, Input, SimpleChanges, OnChanges, SimpleChange } from '@angular/core';
-import { PageEvent, MatPaginator } from '@angular/material/paginator';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { PhotoService } from './../services/photo.service';
+import { Component, OnInit, Input, SimpleChanges, OnChanges, SimpleChange } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { MatCardContent } from '@angular/material/card';
 
 @Component({
   selector: 'app-photo',
@@ -25,18 +21,23 @@ export class PhotoComponent implements OnInit, OnChanges {
   length = 0;
   currentPage = 0;
 
-  constructor(private photoService: PhotoService, private route: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    const photoList: SimpleChange = changes.photos;
-    if (photoList.currentValue) {
-      console.log(photoList.currentValue);
-      this.photos$ = of(photoList.currentValue);
-      this.getPhotos();
+
+    for (let propName in changes) {
+      if (propName == 'photos') {
+        const photoList: SimpleChange = changes.photos;
+        if (photoList.currentValue) {
+          this.photos$ = of(photoList.currentValue);
+          this.getPhotos();
+        }
+      }
     }
+
   }
 
   getPhotos() {

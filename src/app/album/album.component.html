@@ -4,11 +4,12 @@
     <span class="spacer"></span>
     <mat-checkbox>select all</mat-checkbox>
   </mat-card-title-group>
-  <mat-card-content *ngIf="(albums$ | async) as albums">
-    <div *ngIf="albums.length > 1;else loading">
-      <mat-checkbox (change)="onChange($event,album)" [checked]="album.checked" class="checkbox--custom" *ngFor='let album of albums'>
+  <mat-card-content>
+    <div *ngIf="albumContent.length > 1;else loading">
+      <mat-checkbox *ngFor="let album of albumContent" (change)="onChange($event,album)" [checked]="album.checked"
+        class="checkbox--custom">
         {{album.title | slice:0:25}}
-        <span class="checkbox__sublabel color--muted">200 photos</span>
+        <span class="checkbox__sublabel color--muted">{{album.photoCount}}</span>
       </mat-checkbox>
     </div>
   </mat-card-content>
@@ -19,7 +20,7 @@
   </mat-card-footer>
 </mat-card>
 
-<app-photo [isActive]="canActivate" [photos]="photosList"></app-photo>
+<app-photo [isActive]="albumContent.length > 1 ? true : false" [photos]="photosList"></app-photo>
 
 <ng-template #loading>
   <div class="users__msg">
