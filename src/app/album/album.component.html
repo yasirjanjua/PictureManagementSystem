@@ -2,7 +2,7 @@
   <mat-card-title-group>
     <mat-card-title>Albums</mat-card-title>
     <span class="spacer"></span>
-    <mat-checkbox [disabled]="!canActivate">select all</mat-checkbox>
+    <mat-checkbox [disabled]="albumContent.length > 1 ? false : true">select all</mat-checkbox>
   </mat-card-title-group>
   <mat-card-content style="height: 100%;" *ngIf="albumContent.length > 1;else loading">
     <div class="checkbox-grid">
