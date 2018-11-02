@@ -89,6 +89,7 @@ export class AlbumComponent implements OnInit {
 
   onChange(event?, album?) {
     this.progressBarMode = 'indeterminate';
+
     if (album) {
       album.checked = !album.checked;
 
@@ -96,11 +97,11 @@ export class AlbumComponent implements OnInit {
         this.canActivate = false;
       }
 
-      if (album.checked) {
+      if (album.checked && album.albumId) {
         this.photoService.getPhotosByAlbumId(album.albumId).subscribe(data => {
           this.photosList.push(data);
           this.photosList = this.photosList.reduce((acc, val) => acc.concat(val), []);
-          //  console.log(this.photosList);
+          // console.log(this.photosList);
         });
       } else {
         this.photosList = this.photosList.filter(val => val.albumId !== album.albumId);
