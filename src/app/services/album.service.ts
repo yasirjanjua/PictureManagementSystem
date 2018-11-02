@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ConfigService } from './config.service';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +18,13 @@ export class AlbumService {
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private config: ConfigService) { }
 
   getAlbumById(id: number): Observable<any> {
-    return this.http.get(this.apiUrl + '?userId=' + id, this.httpOptions);
+    return this.http.get(this.apiUrl + '?userId=' + id, this.httpOptions)
+      .pipe(
+        catchError(this.config.handleError)
+      );
   }
 
   createAlbum(albumId: number, userId: number, title: string): Observable<any> {
@@ -29,6 +34,9 @@ export class AlbumService {
       'title': title
     };
 
-    return this.http.post(this.apiUrl, body, this.httpOptions);
+    return this.http.post(this.apiUrl, body, this.httpOptions)
+      .pipe(
+        catchError(this.config.handleError)
+      );
   }
 }
