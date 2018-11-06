@@ -8,11 +8,11 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Order of Nice-to-Have features
 
-- Progress Bar Indicator
-- Filters for Users
-- Sorting
-- Pagination
-- Drag and Drop Feature
+- [ ] Progress Bar Indicator
+- [x] Filters for Users
+- [x] Sorting
+- [x] Pagination
+- [ ] Drag and Drop Feature
 
 I have chosen this order according to the priority of elements that can improve the user experience. Like Progress Bar is on the first position in the priority list because it indicates the user how much it needs to wait for the application processing. Filtering the users in the user-list and sorting them helps the user to find its desired selection. Pagination gives freedom to the user to explore as many photos as it wants. Drag and Drop are last in the list because its a feature which is supposed to be mostly used by touch-screen users (limited targetted audience).
 
